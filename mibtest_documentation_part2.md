@@ -58,23 +58,7 @@ Die `XmlDefinitions/ConfigMib.xml` ist die zentrale Konfigurationsdatei:
 
 ## Test-Entwicklung Workflows
 
-### Workflow 1: Neuen Test mit TCE erstellen
-
-```mermaid
-flowchart TD
-    A[TestCaseEditor<br/>öffnen] --> B[Neue Test-Definition<br/>erstellen]
-    B --> C[TestSteps<br/>hinzufügen]
-    C --> D[Parameter<br/>konfigurieren]
-    D --> E[Code generieren]
-    E --> F[.cs File in<br/>MibTest erstellt]
-    F --> G[.csproj automatisch<br/>aktualisiert]
-    G --> H[Build Solution]
-    H --> I[DLL wird erstellt]
-    I --> J[Post-Build kopiert<br/>zu DITES_TESTSCRIPTS_PATH]
-    J --> K[DITES kann Test<br/>laden & ausführen]
-```
-
-### Workflow 2: Manuellen Test erstellen
+### Workflow 1: Manuellen Test erstellen
 
 ```csharp
 // 1. Neue .cs Datei in entsprechendem Ordner erstellen
@@ -146,7 +130,7 @@ namespace DiagTestbase.MibTestsGen3.Production
 // 3. Build & Deploy wie gewohnt
 ```
 
-### Workflow 3: Bestehenden Test anpassen
+### Workflow 2: Bestehenden Test anpassen
 
 **⚠️ ACHTUNG**: Generierte Tests NICHT direkt editieren!
 
@@ -519,18 +503,11 @@ DITES Application
 ## Zusammenfassung
 
 ### MibTest ist:
-✅ **Test-Implementierungs-Repository** - Konkrete Tests für MIB3  
-✅ **Code-Generierungs-Target** - TCE generiert Code hierhin  
-✅ **Build-Artefakt-Quelle** - Produziert DLLs für DITES  
-✅ **Abhängig von Diag-Testbase** - Nutzt Framework via NuGet  
-✅ **Integration mit DITES** - DLLs werden von DITES geladen  
-
-### Key Features:
-- 📂 **10+ Test-Kategorien** (Ident, DTC, Routine, Production, etc.)
-- 🤖 **Auto-generierte Tests** (via TestCaseEditor)
-- 📋 **XML-basierte Konfiguration** (DIDs, DTCs, Routines)
-- 🔧 **Post-Build Deployment** (zu DITES_TESTSCRIPTS_PATH)
-- 🚀 **CI/CD Integration** (Azure DevOps Pipelines)
+**Test-Implementierungs-Repository** - Konkrete Tests für MIB3  
+**Code-Generierungs-Target** - TCE generiert Code hierhin  
+**Build-Artefakt-Quelle** - Produziert DLLs für DITES  
+**Abhängig von Diag-Testbase** - Nutzt Framework via NuGet  
+**Integration mit DITES** - DLLs werden von DITES geladen  
 
 ---
 
